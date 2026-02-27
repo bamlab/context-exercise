@@ -1,12 +1,9 @@
 import { RenderCounter } from "../components/RenderCounter";
-import type { User } from "../types";
+import { useAuth } from "../context/base/AuthContext";
 
-type AuthPanelProps = {
-  isLoggedIn: boolean;
-  user: User | null;
-};
+export const AuthPanel = () => {
+  const { isLoggedIn, user } = useAuth();
 
-export const AuthPanel = ({ isLoggedIn, user }: AuthPanelProps) => {
   return (
     <article className="node">
       <h3>AuthPanel</h3>

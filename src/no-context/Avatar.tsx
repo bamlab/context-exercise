@@ -1,11 +1,9 @@
 import { RenderCounter } from "../components/RenderCounter";
-import type { User } from "../types";
+import { useAuth } from "../context/base/AuthContext";
 
-type AvatarProps = {
-  user: User | null;
-};
+export const Avatar = () => {
+  const { user } = useAuth();
 
-export const Avatar = ({ user }: AvatarProps) => {
   return (
     <article className="node">
       <h5>Avatar</h5>

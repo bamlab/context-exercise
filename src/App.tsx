@@ -1,49 +1,37 @@
 import "./index.css";
 import { useMemo, useState } from "react";
 import { AuthPanel } from "./no-context/AuthPanel";
+import { useAuth, AuthProvider } from "./context/base/AuthContext";
 import { Layout } from "./no-context/Layout";
-import type { User } from "./types";
 
 export function App() {
+  return (
+    <AuthProvider>
+      <WorkshopApp />
+    </AuthProvider>
+  );
+}
+
+const WorkshopApp = () => {
   const [tick, setTick] = useState(0);
-  const [user, setUser] = useState<User | null>({
-    id: "u-1",
-    name: "Ada Lovelace",
-    role: "Trainer",
-  });
+  const { isLoggedIn, login, logout } = useAuth();
 
-  const isLoggedIn = user !== null;
-
-  const treePath = useMemo(() => {
-    return "App -> Layout -> Sidebar -> Avatar";
-  }, []);
-
-  const login = () => {
-    setUser({
-      id: "u-1",
-      name: "Ada Lovelace",
-      role: "Trainer",
-    });
-  };
-
-  const logout = () => {
-    setUser(null);
-  };
+  const treePath = useMemo(() => "App -> Layout -> Sidebar -> Avatar", []);
 
   return (
     <main className="page">
       <header>
         <h1>React Context Workshop</h1>
         <p>
-          Baseline branch with no context: data is passed through props to show
-          prop drilling first.
+          Base context exercise: auth data is now shared through a single
+          provider.
         </p>
       </header>
 
       <section className="card stack">
-        <h2>1) Baseline: no context</h2>
+        <h2>1) Base context</h2>
         <p>
-          Path used to pass <code>user</code>: <code>{treePath}</code>
+          The data still originates from the same path: <code>{treePath}</code>
         </p>
         <div className="row">
           <button onClick={() => setTick(current => current + 1)}>
@@ -54,17 +42,16 @@ export function App() {
           </button>
         </div>
 
-        <Layout user={user} />
-        <AuthPanel isLoggedIn={isLoggedIn} user={user} />
+        <Layout />
+        <AuthPanel />
       </section>
 
       <section className="card">
         <h2>2) Learning goals</h2>
         <ul>
-          <li>Understand when Context is useful and when it is not.</li>
-          <li>Identify the 3 reasons a React component rerenders.</li>
-          <li>Explain why Provider value references can trigger broad rerenders.</li>
-          <li>Practice context optimization techniques.</li>
+          <li>Remove prop drilling with a shared provider.</li>
+          <li>Observe rerenders when provider value changes.</li>
+          <li>Prepare next optimization steps for context performance.</li>
         </ul>
       </section>
 
@@ -72,7 +59,10 @@ export function App() {
         <h2>3) Follow-up branches</h2>
         <ul>
           <li>
-            <code>exercise/create-base-context</code>
+            <code>main</code> (baseline without context)
+          </li>
+          <li>
+            <code>exercise/create-base-context</code> (current branch)
           </li>
           <li>
             <code>exercise/create-optimized-context</code>
@@ -84,4 +74,4 @@ export function App() {
       </section>
     </main>
   );
-}
+};
