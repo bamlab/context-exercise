@@ -1,18 +1,13 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
 import type { User } from "../../types";
 
 type AuthContextValue = {
   user: User | null;
   isLoggedIn: boolean;
-  syncRuns: number;
   login: () => void;
   logout: () => void;
+  notifications: number;
+  addNotification: () => void;
 };
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -27,7 +22,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     name: "Ada Lovelace",
     role: "Trainer",
   });
-  const [syncRuns, setSyncRuns] = useState(0);
+
+  const [notifications, setNotifications] = useState(0);
 
   const login = () => {
     setUser({
@@ -41,20 +37,19 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     setUser(null);
   };
 
-  // Intentionally bad example: this side effect mirrors auth state into local
-  // state and forces an extra rerender after each auth change.
-  useEffect(() => {
-    setSyncRuns(current => current + 1);
-  }, [user]);
+  const addNotification = () => {
+    setNotifications(n => n + 1);
+  };
 
   return (
     <AuthContext.Provider
       value={{
         user,
         isLoggedIn: user !== null,
-        syncRuns,
         login,
         logout,
+        notifications,
+        addNotification,
       }}
     >
       {children}

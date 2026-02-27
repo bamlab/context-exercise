@@ -2,7 +2,7 @@ import { RenderCounter } from "../components/RenderCounter";
 import { useAuth } from "../context/base/AuthContext";
 
 export const AuthPanel = () => {
-  const { isLoggedIn, user, syncRuns } = useAuth();
+  const { isLoggedIn, user } = useAuth();
 
   return (
     <article className="node">
@@ -10,7 +10,6 @@ export const AuthPanel = () => {
       <RenderCounter label="AuthPanel" />
       <p>Status: {isLoggedIn ? "authenticated" : "anonymous"}</p>
       <p>Current user: {user?.name ?? "none"}</p>
-      <p>Provider sync side-effect runs: {syncRuns}</p>
     </article>
   );
 };
