@@ -1,6 +1,8 @@
 # React Context Training Playground
 
-This repository is organized as a workshop:
+This repository is organized as a workshop.
+
+## Useful branches
 
 - `main`: baseline app without context (prop drilling first)
 - `exercise/create-base-context`: first context implementation
