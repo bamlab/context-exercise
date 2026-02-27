@@ -1,0 +1,91 @@
+:root {
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1.5;
+  color: #131313;
+  background-color: #f5f6f7;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.page {
+  margin: 0 auto;
+  max-width: 920px;
+  padding: 2rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #dde1e6;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.node {
+  border: 1px solid #d7dce2;
+  border-radius: 10px;
+  background: #fafbfc;
+  padding: 0.75rem;
+}
+
+.node p {
+  margin: 0.35rem 0;
+}
+
+.node h3,
+.node h4,
+.node h5 {
+  margin: 0 0 0.35rem;
+}
+
+.render-counter {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  color: #4e5a67;
+}
+
+code {
+  background-color: #edf1f5;
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid #bdc7d2;
+  background: #ffffff;
+  padding: 0.45rem 0.7rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f1f4f7;
+}
