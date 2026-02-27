@@ -7,6 +7,13 @@ This repository is organized as a workshop:
 - `exercise/create-optimized-context`: optimized provider with split responsibilities
 - `exercise/react-rerender-reasons`: dedicated demo of React rerender causes
 
+## Exercise order
+
+1. `main`
+2. `exercise/create-base-context`
+3. `exercise/create-optimized-context`
+4. `exercise/react-rerender-reasons`
+
 ## Run locally
 
 ```bash

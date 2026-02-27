@@ -8,16 +8,11 @@ import {
   type ReactNode,
 } from "react";
 import { RenderCounter } from "./components/RenderCounter";
-
 export function App() {
   return (
     <main className="page">
       <header>
         <h1>React Rerender Lab</h1>
-        <p>
-          Dedicated branch to demonstrate the 3 common rerender causes in
-          React.
-        </p>
       </header>
 
       <section className="card stack">
@@ -35,15 +30,6 @@ export function App() {
         <ThemeProviderDemo>
           <ContextConsumerDemo />
         </ThemeProviderDemo>
-      </section>
-
-      <section className="card">
-        <h2>Takeaways</h2>
-        <ul>
-          <li>Reason 1: local state updates rerender the component.</li>
-          <li>Reason 2: changing props rerenders the receiving component.</li>
-          <li>Reason 3: changing context value rerenders subscribers.</li>
-        </ul>
       </section>
     </main>
   );
