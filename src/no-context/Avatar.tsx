@@ -1,8 +1,8 @@
 import { RenderCounter } from "../components/RenderCounter";
-import { useAuth } from "../context/base/AuthContext";
+import { useAuthState } from "../context/optimized/AuthContext";
 
 export const Avatar = () => {
-  const { user } = useAuth();
+  const { user } = useAuthState();
 
   return (
     <article className="node">
