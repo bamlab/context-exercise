@@ -19,11 +19,11 @@ const WorkshopApp = () => {
   return (
     <main className="page">
       <header>
-        <h1>React Context Workshop</h1>
+        <h1>React Context Workshop - Bad Context Example</h1>
       </header>
 
       <section className="card stack">
-        <h2>1) Base context</h2>
+        <h2>1) Base context with bad side effect</h2>
         <div className="row">
           <button onClick={() => setTick(current => current + 1)}>
             Rerender app ({tick})
